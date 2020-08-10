@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <p>hello word</p>
+        <div id="shadow"></div>
+    </div>
+    <script>
+        // Shadow DOM  影子 dom
+        /* 
+            shadow概念：
+                Shadow DOM 是一个 HTML 的规范，其允许开发者封装自己的 HTML 标签、CSS 样式和 JavaScript代码。
+
+            shadow功能：
+                既然是封装html片段，那么功能显而易见，就是让开发人员可以创建出诸如 video这样自定义的一级标签，并且Shadow-dom 具有良好的密封性，方便复用。
+
+                Shadow-dom 是游离在 DOM 树之外的节点树，Shadow-dom 具有良好的密封性
+                
+            mode: 一个指定Shadow DOM封装模式的字符串，可以是下列之一：
+            open 指定为开放的封装模式。
+            closed 指定为关闭的封装模式
+
+         */ 
+        let shadowDOM = shadow.attachShadow({mode:'closed'}); // 外界无法访问 shadow dom
+        let elm = document.createElement('p');
+        elm.innerHTML = '哈哈';
+        let styleElm = document.createElement('style');
+        styleElm.textContent = `P{color:red}`
+        shadowDOM.appendChild(styleElm);
+        shadowDOM.appendChild(elm);
+
+    </script>
+</body>
+</html>
